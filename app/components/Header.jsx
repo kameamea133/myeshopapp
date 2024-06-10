@@ -2,10 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 import { auth} from '@clerk/nextjs/server';
 import { UserButton } from '@clerk/nextjs';
+import { BiCart } from "react-icons/bi";
 
 export default function Header() {
     const { userId } = auth();
-    console.log('hello')
+    
   return (
     <div>
         <nav className='bg-blue-700 py-4 px-6 flex items-center justify-between mb-5'>
@@ -15,6 +16,10 @@ export default function Header() {
                 Clerk App
             </div>
             </Link>
+        </div>
+        <div className='flex'>
+            <Link href='/shop' className='mx-4 text-white'>Shop</Link>
+            <Link href="/cart"><BiCart size={30} fill='pink'/></Link>
         </div>
         <div className="text-white">
             {!userId && (
