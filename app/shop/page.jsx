@@ -19,7 +19,7 @@ const ShopPage = () => {
             <div className='w-[100%] h-auto grid grid-cols-4 gap-4 place-items-center'>
                 {products.map((product) => (
                     <div key={product.id} className="productCard">
-                    <Product image={product.image} title={product.title} price={product.price}/>
+                    <Product image={product.image} title={product.title} price={product.price} description={product.description}/>
             </div>
                 ))}
             </div>
