@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Card, Form, Row, Col } from 'react-bootstrap'
+import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
+import { CartContext } from '../CartContext';
 
-const Product = ({image, title, price, description}) => {
+
+function Product ({title, image, price, description, id}) {
+  const cart = useContext(CartContext);
+  const itemQuantity = cart.getItemQuantity(id);
+  
+  
   return (
-    <div className='bg-white rounded-lg shadow-lg overflow-hidden relative'>
-        <img  src={image} alt="photo" className='w(full object-cover h-64'/>
-        <div className='p-4'>
-        
-            <h3 className='text-xl font-semibold mb-2'>{title}</h3>
-            <p className='text-white bg-red-500 rounded-md p-2 absolute top-2 right-2 mb-2'>{price}€</p>
-            <p className='text-gray-700 mb-4 text-sm'>{description}</p>
-        <button className='bg-green-500 hover:bg-green-600 p-2 rounded-md text-white'>Add To Cart</button>
-        </div> 
-    </div>
+      <Card id={id}>
+        <Card.Body>
+        <Image src={image} fluid/>
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{price}</Card.Text>
+          <Card.Text>{description}</Card.Text>
+          {itemQuantity > 0 ? 
+          <>
+            <Form as={Row}>
+            <Form.Label column="true" sm="6">In Cart: {itemQuantity}</Form.Label>
+            <Col sm="6">
+              <Button sm="6" className='mx-2' onClick={() => cart.addOneToCart(id)}>+</Button>
+              <Button sm="6" className='mx-2' onClick={()=> cart.removeOneFromCart(id)}>-</Button>
+            </Col>
+            </Form>
+            <Button variant='danger' className='my-2' onClick={() => cart.removeOneFromCart(id)}>Remove from Cart</Button>
+          </>
+          :
+          <Button variant="primary" onClick={() => cart.addOneToCart(id)}>Add To Cart</Button>
+          }
+        </Card.Body>
+      </Card>
   )
 }
 
