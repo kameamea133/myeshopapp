@@ -8,6 +8,7 @@ export const CartContext = createContext({
     addOneToCart: () => {},
     removeOneFromCart: () => {},
     deleteFromCart: () => {},
+    clearCart: () => {},
     getTotalcost: () => {}
 
 });
@@ -15,6 +16,8 @@ export const CartContext = createContext({
 export function CartProvider({children}) {
     const [cartItems, setCartItems] = useState([]);
 
+
+     // Function to get the quantity of a specific item in the cart
     function getItemQuantity(id) {
         const quantity = cartItems.find(item => item.id === id)?.quantity
 
@@ -25,6 +28,8 @@ export function CartProvider({children}) {
         return quantity;
     }
 
+
+    // Function to add one item to the cart
     function addOneToCart(id) {
         const quantity = getItemQuantity(id);
 
@@ -49,6 +54,8 @@ export function CartProvider({children}) {
         }
     }
 
+
+    // Function to remove one item from the cart
     function removeOneFromCart(id) {
         const quantity = getItemQuantity(id);
 
@@ -65,6 +72,8 @@ export function CartProvider({children}) {
         }
     }
 
+
+    // Function to delete an item from the cart
      function deleteFromCart(id) {
         setCartItems(
             cartItems => cartItems.filter(currentItem => {
@@ -73,7 +82,14 @@ export function CartProvider({children}) {
         )
      } 
      
-     
+
+     // Function to clear all items from the cart
+     function clearCart() {
+        setCartItems([]); 
+    }
+
+
+    // Function to calculate the total cost of the items in the cart
      function getTotalcost() {
         let totalCost = 0;
         cartItems.map((cartItem) => {
@@ -83,12 +99,15 @@ export function CartProvider({children}) {
         return totalCost;
      }
 
+
+     // Value to be provided by the CartContext
     const contextValue = {
         items: cartItems,
     getItemQuantity,
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
+    clearCart,
     getTotalcost
 
     }

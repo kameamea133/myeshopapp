@@ -1,3 +1,9 @@
+//  Mens Cotton Jacket: price_1PQkojAT6MYqrplOLhbahFdB
+//  White Gold Plated Princess: price_1PQkrCAT6MYqrplOeBYdNpmf
+//  Mens Casual Slim Fit: price_1PQksxAT6MYqrplOhz8jGpkC
+
+
+
 const itemsList = [
     {
       "id": 1,
@@ -24,7 +30,7 @@ const itemsList = [
       }
     },
     {
-      "id": 3,
+      "id": "price_1PQkojAT6MYqrplOLhbahFdB",
       "title": "Mens Cotton Jacket",
       "price": 55.99,
       "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
@@ -36,7 +42,7 @@ const itemsList = [
       }
     },
     {
-      "id": 4,
+      "id": "price_1PQksxAT6MYqrplOhz8jGpkC",
       "title": "Mens Casual Slim Fit",
       "price": 15.99,
       "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
@@ -72,7 +78,7 @@ const itemsList = [
       }
     },
     {
-      "id": 7,
+      "id": "price_1PQkrCAT6MYqrplOeBYdNpmf",
       "title": "White Gold Plated Princess",
       "price": 9.99,
       "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
